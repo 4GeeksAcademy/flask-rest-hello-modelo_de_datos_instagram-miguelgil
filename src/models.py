@@ -27,8 +27,9 @@ class User(db.Model):
 class Follower(db.Model):
     __tablename__ = 'follower'
 
-    user_from_id: Mapped[int] = mapped_column(ForeignKey('user.id'), primary_key=True)
-    user_to_id: Mapped[int] = mapped_column(ForeignKey('user.id'), primary_key=True)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_from_id: Mapped[int] = mapped_column(ForeignKey('user.id'), nullable=False)
+    user_to_id: Mapped[int] = mapped_column(ForeignKey('user.id'), nullable=False)
 
 
 class Post(db.Model):
